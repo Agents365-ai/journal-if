@@ -258,11 +258,27 @@ def lookup_journal(name: str, allow_web: bool = True) -> dict | None:
         result["query"] = name
         return result
 
-    # Fuzzy match: score all candidates, pick best by longest common prefix
+    # Fuzzy match tier 1: AND-term match (most precise, e.g. "J Biol Chem" → "Journal of Biological Chemistry")
+    terms = key.split()
+    if len(terms) >= 2:
+        best = None
+        best_score = float("inf")
+        for ck, cv in cache.items():
+            if all(t in ck for t in terms):
+                score = len(ck)  # prefer shorter name (tighter match)
+                if score < best_score:
+                    best_score = score
+                    best = cv
+        if best:
+            result = dict(best)
+            result["source"] = "local cache (fuzzy)"
+            result["query"] = name
+            return result
+
+    # Fuzzy match tier 2: substring match (broader fallback)
     candidates = []
     for ck, cv in cache.items():
         if key in ck or ck in key:
-            # Score: prefer longer common prefix between query and cached name
             score = len(key) if key in ck else len(ck)
             candidates.append((score, ck, cv))
     if candidates:
