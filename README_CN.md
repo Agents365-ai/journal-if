@@ -15,7 +15,7 @@
 
 一个用于查询期刊影响因子（JCR IF）的 Claude Code 技能。内置 ~200 本顶级期刊数据，并通过 OpenAlex API 回退覆盖全球任意期刊。
 
-![工作流程](https://raw.githubusercontent.com/Agents365-ai/journal-if/main/docs/workflow_CN.drawio.png)
+<img src="https://raw.githubusercontent.com/Agents365-ai/journal-if/main/docs/workflow_CN.drawio.png" width="600" alt="工作流程">
 
 ## 功能特性
 

@@ -15,7 +15,7 @@
 
 A Claude Code skill for looking up journal impact factors (JCR IF). Bundled with ~200 top journals and backed by OpenAlex API fallback for any journal worldwide.
 
-![Workflow](https://raw.githubusercontent.com/Agents365-ai/journal-if/main/docs/workflow.drawio.png)
+<img src="https://raw.githubusercontent.com/Agents365-ai/journal-if/main/docs/workflow.drawio.png" width="600" alt="Workflow">
 
 ## Features
 
